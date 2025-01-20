@@ -1,0 +1,3 @@
+{
+  "**/*.{ts,js,mjs,md,json,scss,html}": ["npm run format"]
+}
