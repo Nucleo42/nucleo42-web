@@ -5,7 +5,9 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
-    "watch": "ng build --watch --configuration development"
+    "watch": "ng build --watch --configuration development",
+    "format": "prettier --write",
+    "format:project": "prettier --write \"**/*\""
   },
   "private": true,
   "dependencies": {
