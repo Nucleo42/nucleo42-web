@@ -4,7 +4,7 @@ import eslintConfigPrettier from 'eslint-config-prettier';
 
 export default tseslint.config(
   {
-    ignores: ['.angular', '.vscode', 'node_modules', 'public', '**/*.mjs'],
+    ignores: ['.angular', '.vscode', 'node_modules', 'public', '**/*.mjs','setupJest.ts'],
   },
   {
     languageOptions: {
