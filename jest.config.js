@@ -1,6 +1,4 @@
-/** @returns {Promise<import('jest').Config>} */
-module.exports = async () => {
-  return {
-    verbose: true,
-  };
+export default {
+  preset:'jest-preset-angular',
+  setupFilesAfterEnv: ['<rootDir>/setup-jest.ts']
 };
