@@ -1,5 +1,5 @@
 /** @returns {Promise<import('jest').Config>} */
-export default () => {
+module.exports = async () => {
   return {
     verbose: true,
   };
