@@ -1,6 +1,12 @@
-/** @returns {Promise<import('jest').Config>} */
-module.exports = async () => {
-  return {
-    verbose: true,
-  };
+module.exports = {
+  projects: [
+    {
+      displayName: "Unit Tests",
+      testEnvironment: "jsdom",
+      testMatch: ["**/*.spec.ts"],
+      transform: {
+        "^.+\\.tsx?$": "ts-jest"
+      },
+    },
+  ],
 };
