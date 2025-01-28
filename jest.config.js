@@ -9,5 +9,14 @@ module.exports = {
         "^.+\\.tsx?$": "ts-jest"
       },
     },
+    {
+      displayName: "Integration Tests",
+      testEnvironment: "node",
+      testMatch: ["**/*.test.ts"],
+      transform: {
+        "^.+\\.tsx?$": "ts-jest"
+      },
+      setupFilesAfterEnv: ["<rootDir>/jest-integration-config.js"]
+    },
   ],
 };
