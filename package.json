@@ -11,8 +11,14 @@
     "format:project": "prettier --write \"**/*\"",
     "lint": "eslint .",
     "lint:fix": "npm run lint -- --fix",
-    "test": "jest",
-    "test:watch":"jest --watch"
+    "test" : "jest",
+    "test:related": "jest --watch",
+    "test:unit" : "jest --selectProjects 'Unit Tests'",
+    "test:integration" : "jest --selectProjects 'Integration Tests'",
+    "test:unit:watch" : "jest --selectProjects 'Unit Tests' --watch",
+    "test:integration:watch" : "jest --selectProjects 'Integration Tests' --watch",
+    "test:unit:verbose": "jest --selectProjects 'Unit Tests' --verbose",
+    "test:integration:verbose": "jest --selectProjects 'Integration Tests' --verbose"
   },
   "private": true,
   "dependencies": {
