@@ -12,7 +12,7 @@
     "lint": "eslint .",
     "lint:fix": "npm run lint -- --fix",
     "test" : "jest",
-    "test:related": "jest --watch",
+    "test:related": "jest --watch --onlyChanged",
     "test:unit" : "jest --selectProjects 'Unit Tests'",
     "test:integration" : "jest --selectProjects 'Integration Tests'",
     "test:unit:watch" : "jest --selectProjects 'Unit Tests' --watch",
