@@ -1,7 +1,9 @@
-export const displayName = "Integration Tests";
-export const testEnvironment = "node";
-export const testMatch = ["**/src/tests/*.test.ts"];
-export const transform = {
-  "^.+\\.tsx?$": "ts-jest"
+module.exports = {
+  displayName: "Integration Tests",
+  testEnvironment: "node",
+  testMatch: ["**/src/tests/*.test.ts"],
+  transform: {
+    "^.+\\.tsx?$": "ts-jest"
+  },
+  testTimeout: 10000,
 };
-export const testTimeout = 10000;
