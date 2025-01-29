@@ -4,7 +4,7 @@ module.exports = {
     {
       displayName: "Unit Tests",
       testEnvironment: "jsdom",
-      testMatch: ["**/*.spec.ts"],
+      testMatch: ["**/src/tests/*.spec.ts"],
       transform: {
         "^.+\\.tsx?$": "ts-jest"
       },
@@ -12,7 +12,7 @@ module.exports = {
     {
       displayName: "Integration Tests",
       testEnvironment: "node",
-      testMatch: ["**/*.test.ts"],
+      testMatch: ["**/src/tests/*.test.ts"],
       transform: {
         "^.+\\.tsx?$": "ts-jest"
       },
