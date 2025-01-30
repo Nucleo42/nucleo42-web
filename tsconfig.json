@@ -5,7 +5,6 @@
   "compilerOptions": {
     "rootDirs": ["src"],
     "outDir": "./dist/out-tsc",
-    "types": ["jest","node"],
     "strict": true,
     "noImplicitOverride": true,
     "noPropertyAccessFromIndexSignature": true,
