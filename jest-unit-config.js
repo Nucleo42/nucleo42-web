@@ -1,6 +1,3 @@
-export const displayName = 'Unit Tests';
-export const testEnvironment = 'jsdom';
-export const testMatch = ['**/src/tests/*.spec.ts'];
-export const transform = {
-  '^.+\\.tsx?$': 'ts-jest',
-};
+const config = require('./jest.config');
+config.testMatch = ['<rootDir>/src/**/*.spec.ts'];
+module.exports = config;

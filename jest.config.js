@@ -1,37 +1,27 @@
-/* eslint-disable no-undef */
+globalThis.ngJest = {
+  skipNgcc: true,
+  tsconfig: 'tsconfig.json',
+};
+
 module.exports = {
-  globals: {
-    'ts-jest': {
-      tsConfig: '<rootDir/tsconfig.json>',
-    },
+  preset: 'jest-preset-angular',
+  testEnvironment: 'jsdom',
+  setupFilesAfterEnv: ['<rootDir>/src/setup-jest.ts'],
+  transform: {
+    '^.+\\.ts$': [
+      'ts-jest',
+      {
+        tsconfig: '<rootDir>/tsconfig.json',
+        stringifyContentPathRegex: '\\.html$',
+        useESM: true,
+      },
+    ],
   },
-  projects: [
-    {
-      displayName: 'Unit Tests',
-      testEnvironment: 'jsdom',
-      testMatch: ['**/src/tests/*.spec.ts'],
-      transform: {
-        '^.+\\.tsx?$': [
-          'ts-jest',
-          {
-            tsconfig: '<rootDir>/tsconfig.spec.json',
-          },
-        ],
-      },
-    },
-    {
-      displayName: 'Integration Tests',
-      testEnvironment: 'node',
-      testMatch: ['**/src/tests/*.test.ts'],
-      transform: {
-        '^.+\\.tsx?$': [
-          'ts-jest',
-          {
-            tsconfig: '<rootDir>/tsconfig.test.json',
-          },
-        ],
-      },
-      setupFilesAfterEnv: ['<rootDir>/jest-integration-config.js'],
-    },
-  ],
+  transformIgnorePatterns: ['/node_modules/(?!flat)/'],
+  collectCoverageFrom: ['<rootDir>/src/app/**/*.ts', '!<rootDir>/src/main.ts', '!<rootDir>/src/environments/**', '!**/*.d.ts'],
+  coverageDirectory: 'coverage',
+  roots: ['<rootDir>/src', '<rootDir>/tests'],
+  fakeTimers: {
+    enableGlobally: true,
+  },
 };

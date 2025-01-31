@@ -1,10 +1,3 @@
-/* eslint-disable no-undef */
-module.exports = {
-  displayName: 'Integration Tests',
-  testEnvironment: 'node',
-  testMatch: ['**/src/tests/*.test.ts'],
-  transform: {
-    '^.+\\.tsx?$': 'ts-jest',
-  },
-  testTimeout: 10000,
-};
+const config = require('./jest.config');
+config.testMatch = ['<rootDir>/tests/integration/**/*.test.ts'];
+module.exports = config;
