@@ -11,14 +11,16 @@
     "format:project": "prettier --write \"**/*\"",
     "lint": "eslint .",
     "lint:fix": "npm run lint --fix",
-    "test": "jest",
+    "test": "jest --passWithNoTests --no-cache --runInBand --silent --noStackTrace",
     "test:related": "jest --watch --onlyChanged",
-    "test:unit": "jest --selectProjects 'Unit Tests'",
-    "test:integration": "jest --selectProjects 'Integration Tests'",
-    "test:unit:watch": "jest --selectProjects 'Unit Tests' --watch",
-    "test:integration:watch": "jest --selectProjects 'Integration Tests' --watch",
-    "test:unit:verbose": "jest --selectProjects 'Unit Tests' --verbose",
-    "test:integration:verbose": "jest --selectProjects 'Integration Tests' --verbose"
+    "test:unit": "npm test -- --watch -c jest-unit-config.js",
+    "test:integration": "npm test -- --watch -c jest-integration-config.js",
+    "test:unit:watch": "npm test -- --watchAll -c jest-unit-config.js",
+    "test:integration:watch": "npm test -- --watchAll -c jest-integration-config.js",
+    "test:unit:verbose": "npm test -- --verbose -c jest-unit-config.js",
+    "test:integration:verbose": "npm test -- --verbose -c jest-integration-config.js",
+    "test:staged": "npm test --findRelatedTests",
+    "test:ci": "jest --passWithNoTests --coverage"
   },
   "private": true,
   "dependencies": {
@@ -35,7 +37,7 @@
     "zone.js": "~0.15.0"
   },
   "devDependencies": {
-    "@angular-builders/jest": "^19.0.0",
+    "@angular-builders/jest": "~19.0.0",
     "@angular-devkit/build-angular": "~19.0.4",
     "@angular/cli": "~19.0.4",
     "@angular/compiler-cli": "~19.0.3",
@@ -50,7 +52,7 @@
     "jest-preset-angular": "~14.5.1",
     "lint-staged": "~15.4.1",
     "prettier": "~3.4.2",
-    "ts-jest": "^29.2.5",
+    "ts-jest": "~29.2.5",
     "typescript": "~5.6.3",
     "typescript-eslint": "~8.18.2"
   }
