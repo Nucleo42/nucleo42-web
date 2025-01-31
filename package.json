@@ -2,7 +2,7 @@
   "name": "nucleo42",
   "version": "0.0.0",
   "scripts": {
-    "preinstall": "git config core.hooksPath hooks",
+    "preinstall": "git config core.hooksPath hooks && chmod +x hooks/*",
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
