@@ -1,0 +1,25 @@
+name: Accessibility Alt Text Check
+
+on:
+  issues:
+    types: [opened, edited]
+  pull_request:
+    types: [opened, edited]
+  issue_comment:
+    types: [created, edited]
+
+permissions:
+  issues: write
+  pull-requests: write
+
+jobs:
+  accessibility_alt_text_bot:
+    name: Check alt text on issues, PRs, and discussions
+    runs-on: ubuntu-latest
+    if: ${{ github.event.issue || github.event.pull_request }}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Run Accessibility Alt Text Bot
+        uses: github/accessibility-alt-text-bot@v1.3.0

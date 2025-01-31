@@ -5,6 +5,7 @@
   "compilerOptions": {
     "rootDirs": ["src"],
     "outDir": "./dist/out-tsc",
+    "types": ["jest", "node"],
     "strict": true,
     "noImplicitOverride": true,
     "noPropertyAccessFromIndexSignature": true,
@@ -37,6 +38,6 @@
     "strictInputAccessModifiers": true,
     "strictTemplates": true
   },
-  "include": ["src/**/*.ts", "eslint.config.mjs"],
+  "include": ["**/*.ts", "**/*.js", "**/*.mjs"],
   "exclude": ["node_modules", "dist"]
 }

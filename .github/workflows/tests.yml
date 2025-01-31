@@ -1,0 +1,30 @@
+name: Tests
+
+on:
+  pull_request:
+    branches: ['development', 'main']
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Use Node.js 22.x
+        uses: actions/setup-node@v3
+        with:
+          node-version: '22.x'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run tests
+        run: npm run test:ci
+
+      - name: Check if all tests passed
+        if: failure()
+        run: |
+          echo "Some tests failed"
+          exit 1
