@@ -7,7 +7,6 @@
     "outDir": "./dist/out-tsc",
     "types": ["jest", "node"],
     "strict": true,
-    "allowJs": true,
     "noImplicitOverride": true,
     "noPropertyAccessFromIndexSignature": true,
     "noImplicitReturns": true,
@@ -39,14 +38,6 @@
     "strictInputAccessModifiers": true,
     "strictTemplates": true
   },
-  "include": [
-    "./src/**/*.ts",
-    "*.js",
-    "eslint.config.mjs",
-    "setup-jest.ts",
-    "jest.config.js",
-    "jest-unit-config.js",
-    "jest-integration-config.js"
-  ],
+  "include": ["**/*.ts", "**/*.js", "**/*.mjs"],
   "exclude": ["node_modules", "dist"]
 }
