@@ -24,4 +24,8 @@ module.exports = {
   fakeTimers: {
     enableGlobally: true,
   },
+  moduleNameMapper: {
+    '^@app/(.*)$': '<rootDir>/src/app/$1',
+    '^@tests/(.*)$': '<rootDir>/tests/$1',
+  },
 };
