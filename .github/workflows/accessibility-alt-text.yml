@@ -14,7 +14,7 @@ permissions:
 
 jobs:
   accessibility_alt_text_bot:
-    name: Check alt text on issues, PRs, and discussions
+    name: Check alt text on issues and PRs
     runs-on: ubuntu-latest
     if: ${{ github.event.issue || github.event.pull_request }}
     steps:
