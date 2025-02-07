@@ -1,34 +1,32 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [FormsModule, MatIconModule, CommonModule],
+  imports: [ReactiveFormsModule, MatIconModule, CommonModule],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss',
 })
 export class LoginComponent {
-  email = '';
-  password = '';
+  loginForm: FormGroup = new FormGroup({
+    email: new FormControl('', [Validators.required.bind(this), Validators.email.bind(this)]),
+    password: new FormControl('', [Validators.required.bind(this), Validators.minLength(8).bind(this)]),
+  });
+
+  submitted = false;
   hidePassword = true;
-  loginError = '';
-  error = false;
 
   login(): void {
-    if (!this.email || !this.password) {
-      this.loginError = 'Por favor, preencha todos os campos.';
+    if (this.loginForm.invalid) {
+      this.loginForm.markAllAsTouched();
+      this.submitted = true;
       return;
     }
-
-    if (this.email === 'user@example.com' && this.password === 'password') {
-      alert('Login bem-sucedido!');
-    } else {
-      this.loginError = 'Email ou senha incorretos.';
-      this.error = true;
-    }
+    console.log(this.loginForm.value);
+    this.submitted = false;
   }
 
   togglePassword(): void {
