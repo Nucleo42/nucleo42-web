@@ -14,6 +14,14 @@ export default tseslint.config(
       },
     },
   },
+  {
+    files: ['**/*.spec.ts', '**/*.test.ts'],
+    languageOptions: {
+      parserOptions: {
+        project: './tsconfig.spec.json',
+      },
+    },
+  },
   eslint.configs.recommended,
   ...tseslint.configs.recommendedTypeChecked,
   ...tseslint.configs.strictTypeChecked,
