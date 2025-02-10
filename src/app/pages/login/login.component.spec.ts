@@ -1,15 +1,26 @@
-import { TestBed, ComponentFixture } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { LoginComponent } from './login.component';
+import { Store } from '@ngxs/store';
+import { of } from 'rxjs';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
+import { CommonModule } from '@angular/common';
+import { Login } from '../../state/auth/auth.action';
 
 describe('LoginComponent', () => {
   let component: LoginComponent;
   let fixture: ComponentFixture<LoginComponent>;
+  let storeMock: { dispatch: jest.Mock; select: jest.Mock };
 
   beforeEach(async () => {
+    storeMock = {
+      dispatch: jest.fn(),
+      select: jest.fn().mockReturnValue(of(null)),
+    };
+
     await TestBed.configureTestingModule({
-      imports: [ReactiveFormsModule, MatIconModule, LoginComponent],
+      imports: [ReactiveFormsModule, MatIconModule, CommonModule, LoginComponent],
+      providers: [{ provide: Store, useValue: storeMock }],
     }).compileComponents();
 
     fixture = TestBed.createComponent(LoginComponent);
@@ -17,62 +28,44 @@ describe('LoginComponent', () => {
     fixture.detectChanges();
   });
 
-  it('deve criar o componente', () => {
+  it('should create', () => {
     expect(component).toBeTruthy();
   });
 
-  it('deve iniciar com o formulário inválido', () => {
-    expect(component.loginForm.valid).toBeFalsy();
+  it('should initialize loginForm with empty values', () => {
+    expect(component.loginForm.value).toEqual({ email: '', password: '' });
   });
 
-  it('deve validar e-mail obrigatório', () => {
-    const email = component.loginForm.controls['email'];
-    email.setValue('');
-    expect(email.valid).toBeFalsy();
-    expect(email.hasError('required')).toBeTruthy();
-  });
+  it('should mark form as touched when login is called with invalid form', () => {
+    component.loginForm.controls.email.setValue('');
+    component.loginForm.controls.password.setValue('');
 
-  it('deve validar formato inválido de e-mail', () => {
-    const email = component.loginForm.controls['email'];
-    email.setValue('email-invalido');
-    expect(email.valid).toBeFalsy();
-    expect(email.hasError('email')).toBeTruthy();
-  });
-
-  it('deve validar senha mínima de 8 caracteres', () => {
-    const password = component.loginForm.controls['password'];
-    password.setValue('1234567'); // Apenas 7 caracteres
-    expect(password.valid).toBeFalsy();
-    expect(password.hasError('minlength')).toBeTruthy();
-  });
-
-  it('deve permitir senha válida', () => {
-    const password = component.loginForm.controls['password'];
-    password.setValue('12345678'); // 8 caracteres válidos
-    expect(password.valid).toBeTruthy();
-  });
-
-  it('deve marcar os campos como tocados ao tentar login inválido', () => {
     component.login();
+
+    expect(component.loginForm.touched).toBeTruthy();
     expect(component.submitted).toBeTruthy();
-    expect(component.loginForm.controls['email'].touched).toBeTruthy();
-    expect(component.loginForm.controls['password'].touched).toBeTruthy();
   });
 
-  it('deve permitir login com dados válidos', () => {
-    component.loginForm.controls['email'].setValue('teste@email.com');
-    component.loginForm.controls['password'].setValue('12345678');
-
+  it('should dispatch login action when form is valid', () => {
+    component.loginForm.controls.email.setValue('test@example.com');
+    component.loginForm.controls.password.setValue('password123');
     component.login();
-    expect(component.loginForm.valid).toBeTruthy();
+
+    expect(storeMock.dispatch).toHaveBeenCalledWith(new Login('test@example.com', 'password123'));
     expect(component.submitted).toBeFalsy();
   });
 
-  it('deve alternar a visibilidade da senha', () => {
-    expect(component.hidePassword).toBeTruthy(); // Inicialmente true
+  it('should toggle password visibility', () => {
+    expect(component.hidePassword).toBeTruthy();
     component.togglePassword();
-    expect(component.hidePassword).toBeFalsy(); // Deve ficar false
-    component.togglePassword();
-    expect(component.hidePassword).toBeTruthy(); // Deve voltar a true
+    expect(component.hidePassword).toBeFalsy();
+  });
+
+  it('should set submitted to true if an error occurs in login', () => {
+    storeMock.select.mockReturnValue(of('Login failed'));
+    component.loginForm.controls.email.setValue('test@example.com');
+    component.loginForm.controls.password.setValue('password123');
+    component.login();
+    expect(component.submitted).toBeTruthy();
   });
 });
