@@ -14,7 +14,10 @@ export class AuthService {
   constructor(private http: HttpClient) {}
 
   login(email: string, password: string) {
-    console.log('Chegou no componente Service');
     return this.http.post<AuthResponse>(`${this.apiUrl}/login`, { email, password });
+  }
+
+  getApiUrlTest() {
+    return this.apiUrl;
   }
 }
