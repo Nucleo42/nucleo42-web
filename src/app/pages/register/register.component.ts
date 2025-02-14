@@ -2,16 +2,21 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
+import { RegisterUser } from '@app/state/user/registerUser/register.actions';
+import { NgxsFormDirective, UpdateFormDirty } from '@ngxs/form-plugin';
+import { Store } from '@ngxs/store';
 
 @Component({
   selector: 'app-register',
   standalone: true,
-  imports: [ReactiveFormsModule, MatIconModule, CommonModule],
+  imports: [ReactiveFormsModule, MatIconModule, CommonModule, NgxsFormDirective],
   templateUrl: './register.component.html',
   styleUrl: './register.component.scss',
 })
 export class RegisterComponent {
-  userForm: FormGroup = new FormGroup({
+  constructor(private store: Store) {}
+
+  newCreatedUserForm: FormGroup = new FormGroup({
     name: new FormControl('', [Validators.required.bind(this)]),
     userName: new FormControl('', [Validators.required.bind(this)]),
     email: new FormControl('', [Validators.required.bind(this), Validators.email.bind(this)]),
@@ -23,12 +28,12 @@ export class RegisterComponent {
   hideConfirmPassword = true;
 
   get form() {
-    return this.userForm.controls;
+    return this.newCreatedUserForm.controls;
   }
 
   register() {
-    if (this.userForm.invalid) {
-      this.userForm.markAllAsTouched();
+    if (this.newCreatedUserForm.invalid) {
+      this.newCreatedUserForm.markAllAsTouched();
       return;
     }
 
@@ -37,7 +42,21 @@ export class RegisterComponent {
       return;
     }
 
-    console.log('Formulário válido, enviando dados...', this.userForm.value);
+    this.store.dispatch(
+      new RegisterUser(
+        this.form['name'].value as string,
+        this.form['userName'].value as string,
+        this.form['email'].value as string,
+        this.form['password'].value as string,
+      ),
+    );
+
+    this.store.dispatch(
+      new UpdateFormDirty({
+        dirty: false,
+        path: 'createdUser.newCreatedUserForm',
+      }),
+    );
   }
 
   togglePassword(field: string) {
@@ -49,7 +68,7 @@ export class RegisterComponent {
   }
 
   hasError(controlName: string, error: string): boolean {
-    const control = this.userForm.get(controlName);
+    const control = this.newCreatedUserForm.get(controlName);
     return !!(control && control.touched && control.hasError(error));
   }
 }

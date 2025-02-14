@@ -3,7 +3,7 @@
     <div class="billboard">
       <p class="text">Desenvolva suas ideias, construa seu futuro.</p>
     </div>
-    <form [formGroup]="userForm" (ngSubmit)="register()">
+    <form [formGroup]="newCreatedUserForm" ngxsForm="createdUser.newCreatedUserForm" (ngSubmit)="register()">
       <header>
         <h1>Registro</h1>
         <p>Digite seus dados nos campos abaixo</p>
