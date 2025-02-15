@@ -17,4 +17,7 @@ export class UserService {
   createdUser({ name, userName, email, password }: RegisterUser) {
     return this.http.post<RegisterResponse>(`${this.apiUrl}/created`, { name, userName, email, password });
   }
+  getApiUrlTest() {
+    return this.apiUrl;
+  }
 }
