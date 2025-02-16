@@ -1,1 +1,22 @@
-<p>footer works!</p>
+<footer class="footer">
+  <div class="footer__contact">Contatos</div>
+  <div class="footer__email">Email: nucleo42&#64;hotmail.com</div>
+  <div class="footer__social-media">
+    <div class="footer__social-media">
+      <div class="footer__social-media-item" (click)="handleClick('twitter')">
+        <mat-icon class="footer__social-media-icon" svgIcon="twitter"></mat-icon>
+      </div>
+      <div class="footer__social-media-item" (click)="handleClick('linkedIn')">
+        <mat-icon class="footer__social-media-icon" svgIcon="linkedIn"></mat-icon>
+      </div>
+      <div class="footer__social-media-item" (click)="handleClick('gitHub')">
+        <mat-icon class="footer__social-media-icon" svgIcon="gitHub"></mat-icon>
+      </div>
+      <div class="footer__social-media-item" (click)="handleClick('discord')">
+        <mat-icon class="footer__social-media-icon" svgIcon="discord"></mat-icon>
+      </div>
+    </div>
+  </div>
+  <div class="footer__terms">Politicas e Termos de uso &nbsp;&nbsp;&nbsp; Termos de Privacidade</div>
+  <div class="footer__copyright">©Produzido por Nucleo42</div>
+</footer>
