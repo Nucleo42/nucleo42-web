@@ -21,7 +21,6 @@ describe('HeaderComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  // Add a test for the onClick method
   it('should dispatch Navigate action on onClick', () => {
     const store = TestBed.inject(Store);
     const dispatchSpy = jest.spyOn(store, 'dispatch');
