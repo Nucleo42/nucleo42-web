@@ -23,11 +23,6 @@ export class AuthState {
   ) {}
 
   @Selector()
-  static getToken(state: AuthStateModel) {
-    return state.token;
-  }
-
-  @Selector()
   static getError({ error }: AuthStateModel): AuthStateModel['error'] {
     return error;
   }
@@ -49,7 +44,7 @@ export class AuthState {
   loginSuccess(ctx: StateContext<AuthStateModel>, { token }: LoginSuccess) {
     ctx.patchState({ token });
     localStorage.setItem('authToken', token);
-    return this.router.navigate(['/dashboard']);
+    return this.router.navigate(['/']);
   }
 
   @Action(LoginFailed)
