@@ -1,4 +1,4 @@
-name: Tests
+name: Tests and Coverage
 
 on:
   pull_request:
@@ -20,11 +20,11 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Run tests
+      - name: Run tests with coverage
         run: npm run test:ci
 
-      - name: Check if all tests passed
+      - name: Check if all testes passand coverage is 100%
         if: failure()
         run: |
-          echo "Some tests failed"
+          echo "Some tests failed or coverage is not 100%"
           exit 1
