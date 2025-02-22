@@ -7,7 +7,6 @@ import { FooterComponent } from './components/footer/footer.component';
   selector: 'app-root',
   imports: [HeaderComponent, LayoutComponent, FooterComponent],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.scss',
 })
 export class AppComponent {
   title = 'forty-two-web';
