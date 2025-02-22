@@ -4,9 +4,8 @@ import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-footer',
-  standalone: true,
   imports: [MatIconModule],
-  providers: [MatIconRegistry], // Only MatIconRegistry is needed here
+  providers: [MatIconRegistry],
   templateUrl: './footer.component.html',
   styleUrls: ['./footer.component.scss'],
 })

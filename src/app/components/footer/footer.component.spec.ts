@@ -21,4 +21,18 @@ describe('FooterComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  describe('handleClick() Method', () => {
+    it('should open Twitter URL for platform "twitter"', () => {
+      const openSpy = jest.spyOn(window, 'open').mockImplementation(() => null);
+      component.handleClick('twitter');
+      expect(openSpy).toHaveBeenCalledWith('https://twitter.com', '_blank');
+      component.handleClick('linkedIn');
+      expect(openSpy).toHaveBeenCalledWith('https://twitter.com', '_blank');
+      component.handleClick('gitHub');
+      expect(openSpy).toHaveBeenCalledWith('https://twitter.com', '_blank');
+      component.handleClick('discord');
+      expect(openSpy).toHaveBeenCalledWith('https://twitter.com', '_blank');
+    });
+  });
 });
