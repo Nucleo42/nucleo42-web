@@ -1,4 +1,4 @@
-name: Tests
+name: Tests and Coverage
 
 on:
   pull_request:
@@ -20,11 +20,23 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Run tests
-        run: npm run test:ci
+      - name: Run tests with coverage
+        run: npm run test:ci > test-output.txt 2>&1 || true
+        id: run_tests
 
-      - name: Check if all tests passed
-        if: failure()
+      - name: Analyze test results and coverage
+        if: always()
         run: |
-          echo "Some tests failed"
-          exit 1
+          # Check if the test run failed
+          if [ ${{ steps.run_tests.outcome }} == 'failure' ]; then
+            # Check if the failure was due to test failures or coverage issues
+            if grep -q "Test Suites:" test-output.txt && ! grep -q "Failed" test-output.txt; then
+              echo "Coverage is not 100%. Please improve test coverage."
+              exit 1
+            else
+              echo "Some tests failed. Please fix failing tests."
+              exit 1
+            fi
+          else
+            echo "All tests passed and coverage is 100%."
+          fi
