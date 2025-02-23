@@ -1,0 +1,123 @@
+<button class="filter-buttom" (click)="toggleFilter()">
+  <img src="assets/svg/filter.svg" alt="Ícone de filtro" />
+  Filtro
+</button>
+
+<div id="filter-wrapper" class="filter-wrapper">
+  <div class="filter-component">
+    <div class="filter-header">
+      <h2>Filtro</h2>
+      <aside class="div-filter">
+        <button class="reset-button">Reiniciar</button>
+        <button class="close-button" (click)="toggleFilter()"><img src="assets/svg/xMark.svg" alt="X" /></button>
+      </aside>
+    </div>
+    <div class="divider--full-width"></div>
+    <div class="filter-group">
+      <h3>Linguagens</h3>
+      <div class="checkbox-container">
+        <label class="custom-checkbox">
+          <input type="checkbox" data-category="linguagens" data-value="javascript" />
+          <span class="checkmark"></span>
+        </label>
+        <span>Javascript</span>
+      </div>
+      <div class="checkbox-container">
+        <label class="custom-checkbox">
+          <input type="checkbox" data-category="linguagens" data-value="php" />
+          <span class="checkmark"></span>
+        </label>
+        <span>PHP</span>
+      </div>
+      <div class="checkbox-container">
+        <label class="custom-checkbox">
+          <input type="checkbox" data-category="linguagens" data-value="java" />
+          <span class="checkmark"></span>
+        </label>
+        <span>Java</span>
+      </div>
+      <div class="checkbox-container">
+        <label class="custom-checkbox">
+          <input type="checkbox" data-category="linguagens" data-value="python" />
+          <span class="checkmark"></span>
+        </label>
+        <span>Python</span>
+      </div>
+    </div>
+    <div class="divider"></div>
+    <div class="filter-group">
+      <h3>Dificuldade</h3>
+      <div class="checkbox-container">
+        <label class="custom-checkbox">
+          <input type="checkbox" data-category="Difficulty" data-value="difficulty1" />
+          <span class="checkmark"></span>
+        </label>
+        <span>Iniciante</span>
+      </div>
+      <div class="checkbox-container">
+        <label class="custom-checkbox">
+          <input type="checkbox" data-category="Difficulty" data-value="difficulty2" />
+          <span class="checkmark"></span>
+        </label>
+        <span>Junior</span>
+      </div>
+      <div class="checkbox-container">
+        <label class="custom-checkbox">
+          <input type="checkbox" data-category="Difficulty" data-value="difficulty3" />
+          <span class="checkmark"></span>
+        </label>
+        <span>Pleno</span>
+      </div>
+      <div class="checkbox-container">
+        <label class="custom-checkbox">
+          <input type="checkbox" data-category="Difficulty" data-value="difficulty4" />
+          <span class="checkmark"></span>
+        </label>
+        <span>Senior</span>
+      </div>
+    </div>
+    <div class="divider"></div>
+    <div class="filter-group">
+      <h3>Status</h3>
+      <div class="checkbox-container">
+        <label class="custom-checkbox">
+          <input type="checkbox" data-category="Difficulty" data-value="difficulty1" />
+          <span class="checkmark"></span>
+        </label>
+        <span>Não iniciou</span>
+      </div>
+      <div class="checkbox-container">
+        <label class="custom-checkbox">
+          <input type="checkbox" data-category="Difficulty" data-value="difficulty2" />
+          <span class="checkmark"></span>
+        </label>
+        <span>Iniciou</span>
+      </div>
+      <div class="checkbox-container">
+        <label class="custom-checkbox">
+          <input type="checkbox" data-category="Difficulty" data-value="difficulty3" />
+          <span class="checkmark"></span>
+        </label>
+        <span>Finalizado</span>
+      </div>
+    </div>
+    <div class="divider"></div>
+    <div class="filter-group">
+      <h3>Status Vagas</h3>
+      <div class="checkbox-container">
+        <label class="custom-checkbox">
+          <input type="checkbox" data-category="Difficulty" data-value="difficulty1" />
+          <span class="checkmark"></span>
+        </label>
+        <span>Abertas</span>
+      </div>
+      <div class="checkbox-container">
+        <label class="custom-checkbox">
+          <input type="checkbox" data-category="Difficulty" data-value="difficulty2" />
+          <span class="checkmark"></span>
+        </label>
+        <span>Fechadas</span>
+      </div>
+    </div>
+  </div>
+</div>
