@@ -1,0 +1,198 @@
+@import '@fortawesome/fontawesome-free/css/all.css';
+
+$electric-violet-800: #6806b6;
+$electric-violet-600: #981bfd;
+$silver-chalice-100: #e0e0e0;
+$backgorund: #fcfcfc;
+$z-index-overlay: 3;
+$z-index-filter: 4;
+$tundora-100: #767676;
+$font: 'Poppins', sans-serif;
+
+.filter-buttom {
+  display: flex;
+  width: 115px;
+  height: 44px;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border-radius: 8px;
+  background-color: $electric-violet-800;
+  font-family: $font;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: 1.5%;
+  color: $silver-chalice-100;
+  cursor: pointer;
+
+  &:active {
+    opacity: 0.9;
+    transform: scale(0.98);
+  }
+
+  @media (width: 780px) {
+    width: 110;
+    height: 40;
+    border-radius: 8px;
+  }
+
+  .filter-icon {
+    width: 24px;
+    height: 24px;
+    color: $silver-chalice-100;
+  }
+}
+.filter-wrapper {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  justify-content: flex-end;
+  z-index: $z-index-overlay;
+  background-color: #00000072;
+
+  .filter-component {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    width: 360px;
+    height: 100vh;
+    align-items: center;
+    background-color: $backgorund;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-family: Poppins, Arial, sans-serif;
+    z-index: $z-index-filter;
+    overflow: scroll;
+    overflow-x: hidden;
+
+    .filter-header {
+      display: flex;
+      width: 288px;
+      padding: 0px 36px 0px 36px;
+      margin-top: 8px;
+      justify-content: space-between;
+      align-items: center;
+
+      .div-filter {
+        display: flex;
+        width: 101px;
+        row-gap: 8px;
+        justify-content: space-between;
+      }
+
+      h2 {
+        font-size: 24px;
+        font-weight: 600;
+      }
+
+      .reset-button,
+      .close-button {
+        background: none;
+        border: none;
+        font:
+          none 500 12px/18px Poppins,
+          Arial,
+          sans-serif;
+        text-align: center;
+        letter-spacing: 1.5%;
+        cursor: pointer;
+        font-size: 14px;
+        color: $tundora-100;
+
+        &:hover {
+          text-decoration: none;
+        }
+      }
+
+      .divider {
+        width: 288px;
+        height: 2px;
+      }
+    }
+    .divider--full-width {
+      width: 360px;
+      height: 1px;
+      border: 1px solid $silver-chalice-100;
+      background-color: $silver-chalice-100;
+    }
+    .divider {
+      width: 288px;
+      height: 1px;
+      border: 1px solid $silver-chalice-100;
+      background-color: $silver-chalice-100;
+    }
+
+    .filter-group {
+      width: 288px;
+      margin: 24px 0;
+
+      h3 {
+        font-size: 18px;
+        margin-bottom: 21px;
+      }
+
+      .checkbox-container {
+        display: flex;
+        align-items: center;
+        margin-bottom: 8px;
+        gap: 8px;
+
+        .custom-checkbox {
+          display: inline-block;
+          position: relative;
+          width: 20px;
+          height: 20px;
+
+          input[type='checkbox'] {
+            position: absolute;
+            opacity: 0;
+            cursor: pointer;
+          }
+
+          .checkmark {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 100%;
+            border-radius: 4px;
+            background-color: #fff;
+            border: 2px solid $electric-violet-600;
+            transition:
+              background-color 0.3s ease,
+              border-color 0.3s ease;
+
+            &::before {
+              content: '';
+              display: block;
+              width: 12px;
+              height: 12px;
+              background-image: url('/assets/svg/xMark.svg');
+              background-size: contain;
+              background-repeat: no-repeat;
+              opacity: 0;
+              transition:
+                opacity 0.2s ease-in-out,
+                transform 0.2s ease-in-out;
+              transform: scale(0.8);
+            }
+          }
+
+          input[type='checkbox']:checked + .checkmark {
+            background-color: $backgorund;
+            border-color: $electric-violet-800;
+
+            &::before {
+              opacity: 1;
+              transform: scale(1);
+            }
+          }
+        }
+      }
+    }
+  }
+}
