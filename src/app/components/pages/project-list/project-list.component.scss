@@ -1,0 +1,102 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+$font-family: 'Poppins', sans-serif;
+
+$electric-violet-800: #6806b6;
+$background: #fcfcfc;
+
+$gap: 24px 16px;
+$mobile-card-width: 320px;
+$mobile-card-height: 477px;
+$mobile-large-gap: 8px 16px;
+$mobile-gap: 24px 0;
+$mobile-header-height: 146px;
+
+$tablet-card-width: 340px;
+$tablet-card-height: 482px;
+
+$desktop-card-width: 355px;
+$desktop-card-height: 485px;
+$desktop-grid-max: 1097px;
+
+$breakpoint-tablet: 656px;
+$breakpoint-desktop: 1000px;
+
+.project-list {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: auto;
+  font-family: $font-family;
+
+  .project-list__header {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    align-items: center;
+    top: 0;
+    width: 100%;
+    padding-top: 16px;
+    height: $mobile-header-height;
+    justify-content: center;
+    background-color: $background;
+
+    .nav-bar {
+      max-width: 1206px;
+      width: 100%;
+      justify-content: space-between;
+      margin-bottom: 32px;
+
+      @media (min-width: 500px) {
+        width: 96%;
+      }
+    }
+    .filter {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      max-width: $mobile-card-width;
+      margin: 0 auto;
+
+      @media (min-width: 500px) {
+        width: 96%;
+      }
+
+      @media (min-width: $breakpoint-tablet) {
+        margin: 8px auto 0 auto;
+        max-width: 652px;
+      }
+
+      @media (min-width: $breakpoint-desktop) {
+        max-width: $desktop-grid-max;
+      }
+    }
+  }
+
+  &__component {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: $mobile-gap;
+    margin-top: 156px;
+
+    @media (min-width: 656px) {
+      grid-template-columns: repeat(2, 1fr);
+      gap: $gap;
+    }
+
+    @media (min-width: 1000px) {
+      grid-template-columns: repeat(3, 1fr);
+      gap: $gap;
+    }
+
+    .project-card {
+      width: auto;
+      height: auto;
+    }
+  }
+
+  &__title {
+    color: $electric-violet-800;
+  }
+}
