@@ -1,0 +1,98 @@
+@use 'sass:math';
+
+$color-violet-800: #6806b6;
+$color-violet-600: #8b00ff;
+$color-violet-400: #be6aff;
+$color-neutral-light: #fcfcfc;
+
+$font-family: 'Poppins', sans-serif;
+$border-radius-base: 8px;
+$spacing-base: 8px;
+
+$card-width: (
+  mobile: 320px,
+  desktop: 355px,
+);
+
+$card-height: (
+  mobile: 467px,
+  desktop: 485px,
+);
+
+.project-card {
+  display: flex;
+  flex-direction: column;
+  width: map-get($card-width, desktop);
+  height: map-get($card-height, desktop);
+  background-color: $color-neutral-light;
+  border-radius: $border-radius-base;
+
+  @media (min-width: 1146px) {
+    width: map-get($card-width, desktop);
+    height: map-get($card-height, desktop);
+  }
+
+  @media (max-width: 1120px) {
+    width: map-get($card-width, mobile);
+    height: map-get($card-height, mobile);
+  }
+
+  &__image {
+    width: 100%;
+    height: 300px;
+    margin-bottom: math.div($spacing-base, 1.5);
+    border-radius: $border-radius-base;
+    object-fit: cover;
+    background-color: #6806b6;
+  }
+
+  &__title {
+    margin: 0 0 math.div($spacing-base, 2);
+    width: 100%;
+    overflow: hidden;
+    color: $color-violet-600;
+    font: 500 23px/1.2 $font-family;
+  }
+
+  &__stacks {
+    display: flex;
+    color: $color-violet-400;
+    gap: $spacing-base;
+    align-items: center;
+    font: 400 16px $font-family;
+
+    &-icons {
+      display: flex;
+      gap: math.div($spacing-base, 3);
+    }
+  }
+
+  .squared_icon {
+    width: 19px;
+    height: 19px;
+    background-color: $color-violet-600;
+  }
+
+  &__description {
+    width: 100%;
+    margin: $spacing-base 0;
+    font: 400 16px/1.2 $font-family;
+    color: #000;
+  }
+
+  &__button {
+    width: 100%;
+    height: 40px;
+    background: $color-violet-800;
+    color: #fff;
+    border-radius: $border-radius-base;
+    font: bold 16px/1.2 $font-family;
+    cursor: pointer;
+    transition: all 0.2s;
+
+    &:active {
+      opacity: 0.9;
+      transform: scale(0.98);
+    }
+  }
+}
