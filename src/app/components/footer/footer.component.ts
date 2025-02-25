@@ -14,7 +14,6 @@ export class FooterComponent {
     private matIconRegistry: MatIconRegistry,
     private domSanitizer: DomSanitizer,
   ) {
-    this.matIconRegistry.addSvgIcon('twitter', this.domSanitizer.bypassSecurityTrustResourceUrl('icons/twitterIcon.svg'));
     this.matIconRegistry.addSvgIcon('linkedIn', this.domSanitizer.bypassSecurityTrustResourceUrl('icons/linkedInIcon.svg'));
     this.matIconRegistry.addSvgIcon('gitHub', this.domSanitizer.bypassSecurityTrustResourceUrl('icons/gitHubIcon.svg'));
     this.matIconRegistry.addSvgIcon('discord', this.domSanitizer.bypassSecurityTrustResourceUrl('icons/discordIcon.svg'));
@@ -22,13 +21,10 @@ export class FooterComponent {
 
   handleClick(platform: string) {
     switch (platform) {
-      case 'twitter':
-        window.open('https://twitter.com', '_blank');
-        break;
-      case 'linkedIn':
+      case 'linkedin':
         window.open('https://linkedin.com', '_blank');
         break;
-      case 'gitHub':
+      case 'github':
         window.open('https://github.com', '_blank');
         break;
       case 'discord':
