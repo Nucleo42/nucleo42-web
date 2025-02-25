@@ -1,0 +1,72 @@
+.footer {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 1.5rem;
+  background-color: #ffffff;
+  padding: 1.25rem 0;
+  text-align: center;
+  height: 16.625rem;
+}
+
+.footer__contact {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--primary-color);
+  margin-bottom: 0.5rem;
+}
+
+.footer__email {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1rem;
+  font-weight: 500;
+  color: black;
+}
+
+.footer__social-media {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.footer__social-media-item {
+  height: 2.5rem;
+  width: 2.5rem;
+  cursor: pointer;
+}
+
+.footer__social-media-icon {
+  height: 90%;
+  width: 90%;
+}
+
+.footer__social-media-icon:hover {
+  height: 100%;
+  width: 100%;
+  opacity: 0.8;
+}
+
+.footer__terms {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  row-gap: 30px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1rem;
+  font-weight: 400;
+  color: black;
+
+  @media (min-width: 375px) {
+    display: flex;
+    gap: 30px;
+  }
+}
+
+.footer__copyright {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1rem;
+  font-weight: 400;
+  color: var(--primary-color);
+}

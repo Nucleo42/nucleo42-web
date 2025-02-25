@@ -20,6 +20,14 @@ module.exports = {
   transformIgnorePatterns: ['/node_modules/(?!flat)/'],
   collectCoverageFrom: ['<rootDir>/src/app/**/*.ts', '!<rootDir>/src/main.ts', '!<rootDir>/src/environments/**', '!**/*.d.ts'],
   coverageDirectory: 'coverage',
+  coverageThreshold: {
+    global: {
+      branches: 100,
+      functions: 100,
+      lines: 100,
+      statements: 100,
+    },
+  },
   roots: ['<rootDir>/src', '<rootDir>/tests'],
   fakeTimers: {
     enableGlobally: true,

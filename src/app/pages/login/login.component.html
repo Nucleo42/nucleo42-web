@@ -1,0 +1,57 @@
+<main class="container-form">
+  <h1 class="billboard">Conecte, colabore e transforme ideias em realidade!</h1>
+
+  <form (ngSubmit)="login()" #loginForm="ngForm">
+    <header>
+      <h1>Login</h1>
+      <p>Digite seus dados nos campos abaixo</p>
+    </header>
+
+    <div *ngIf="loginError" class="error-message">Email e/ou senha incorreto(s)!. Tente novamente.</div>
+
+    <div>
+      <label for="email">Email</label>
+      <input
+        [className]="loginError ? 'error' : ''"
+        type="email"
+        id="email"
+        [(ngModel)]="email"
+        name="email"
+        placeholder="Example@gmail.com"
+        required />
+    </div>
+
+    <div>
+      <label class="label-with-icon" for="password"> Senha </label>
+      <div class="input-icon">
+        <input
+          [className]="loginError ? 'error' : ''"
+          [type]="hidePassword ? 'password' : 'text'"
+          id="password"
+          [(ngModel)]="password"
+          name="password"
+          placeholder="*********"
+          required />
+        <mat-icon (click)="togglePassword()" class="visibility-icon bg-none" aria-label="Alternar visibilidade da senha">
+          {{ hidePassword ? 'visibility_off' : 'visibility' }}
+        </mat-icon>
+      </div>
+    </div>
+
+    <div>
+      <a href="#" aria-label="Recuperar senha">Esqueci minha senha</a>
+      <button type="submit" class="login">Acessar</button>
+    </div>
+
+    <p class="text-center">Ou faça login com</p>
+
+    <div class="g-button">
+      <button type="button" class="secondary icon" aria-label="Login com Google">
+        Google <img src="google.png" alt="Ícone do Google" />
+      </button>
+      <button type="button" class="secondary icon" aria-label="Login com GitHub">
+        GitHub <img src="github.png" alt="Ícone do GitHub" />
+      </button>
+    </div>
+  </form>
+</main>
