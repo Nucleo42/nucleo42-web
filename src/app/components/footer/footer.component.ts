@@ -14,9 +14,9 @@ export class FooterComponent {
     private matIconRegistry: MatIconRegistry,
     private domSanitizer: DomSanitizer,
   ) {
-    this.matIconRegistry.addSvgIcon('linkedIn', this.domSanitizer.bypassSecurityTrustResourceUrl('icons/linkedInIcon.svg'));
-    this.matIconRegistry.addSvgIcon('gitHub', this.domSanitizer.bypassSecurityTrustResourceUrl('icons/gitHubIcon.svg'));
-    this.matIconRegistry.addSvgIcon('discord', this.domSanitizer.bypassSecurityTrustResourceUrl('icons/discordIcon.svg'));
+    this.matIconRegistry.addSvgIcon('linkedIn', this.domSanitizer.bypassSecurityTrustResourceUrl('icons/linkedin.svg'));
+    this.matIconRegistry.addSvgIcon('gitHub', this.domSanitizer.bypassSecurityTrustResourceUrl('icons/github.svg'));
+    this.matIconRegistry.addSvgIcon('discord', this.domSanitizer.bypassSecurityTrustResourceUrl('icons/discord.svg'));
   }
 
   handleClick(platform: string) {
