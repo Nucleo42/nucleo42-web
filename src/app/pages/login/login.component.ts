@@ -1,34 +1,52 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
+import { Store } from '@ngxs/store';
+import { Login } from '@app/state/auth/auth.action';
+import { AuthState } from '@app/state/auth/auth.state';
+import { filter, take } from 'rxjs';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [FormsModule, MatIconModule, CommonModule],
+  imports: [ReactiveFormsModule, MatIconModule, CommonModule],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss',
 })
 export class LoginComponent {
-  email = '';
-  password = '';
+  loginForm = new FormGroup({
+    email: new FormControl('', [Validators.required.bind(this), Validators.email.bind(this)]),
+    password: new FormControl('', [Validators.required.bind(this), Validators.minLength(8).bind(this)]),
+  });
+
+  submitted = false;
   hidePassword = true;
-  loginError = '';
-  error = false;
+
+  constructor(private store: Store) {}
 
   login(): void {
-    if (!this.email || !this.password) {
-      this.loginError = 'Por favor, preencha todos os campos.';
+    if (this.loginForm.invalid) {
+      this.loginForm.markAllAsTouched();
+      this.submitted = true;
+    }
+
+    const { email, password } = this.loginForm.value;
+    if (!email || !password) {
       return;
     }
 
-    if (this.email === 'user@example.com' && this.password === 'password') {
-      alert('Login bem-sucedido!');
-    } else {
-      this.loginError = 'Email ou senha incorretos.';
-      this.error = true;
-    }
+    this.store.dispatch(new Login(email, password));
+    this.submitted = false;
+    this.store
+      .select(AuthState.getError.bind(this))
+      .pipe(
+        filter((error) => !!error),
+        take(1),
+      )
+      .subscribe(() => {
+        this.submitted = true;
+      });
   }
 
   togglePassword(): void {
