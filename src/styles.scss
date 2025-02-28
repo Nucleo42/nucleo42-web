@@ -1,4 +1,10 @@
 /* You can add global styles to this file, and also import other style files */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
 :root {
   --primary-color: #6806b6;
   --primary-color-transparent: #6806b680;
@@ -12,6 +18,7 @@ body {
   height: 100%;
 }
 body {
+  min-height: 100vh;
   margin: 0;
   font-family: Roboto, 'Helvetica Neue', sans-serif;
 }
