@@ -110,17 +110,19 @@ $font: 'Poppins', sans-serif;
         height: 2px;
       }
     }
-    .divider--full-width {
-      width: 360px;
+
+    .divider-common {
       height: 1px;
       border: 1px solid $silver-chalice-100;
       background-color: $silver-chalice-100;
     }
+    .divider--full-width {
+      @extend .divider-common;
+      width: 360px;
+    }
     .divider {
+      @extend .divider-common;
       width: 288px;
-      height: 1px;
-      border: 1px solid $silver-chalice-100;
-      background-color: $silver-chalice-100;
     }
 
     .filter-group {
