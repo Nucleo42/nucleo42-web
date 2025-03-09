@@ -5,7 +5,8 @@ $electric-violet-800: #6806b6;
     display: none;
   }
 
-  &__button {
+  &__button,
+  .close-button {
     display: flex;
     align-items: center;
     justify-content: center;
