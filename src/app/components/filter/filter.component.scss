@@ -67,7 +67,7 @@ $font: 'Poppins', sans-serif;
     overflow: scroll;
     overflow-x: hidden;
 
-    .filter-header {
+    &__header {
       display: flex;
       width: 288px;
       padding: 0px 36px 0px 36px;
