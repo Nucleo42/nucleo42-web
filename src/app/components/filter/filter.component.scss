@@ -70,15 +70,14 @@ $font: 'Poppins', sans-serif;
     &__header {
       display: flex;
       width: 288px;
-      padding: 0px 36px 0px 36px;
+      height: 56px;
       margin-top: 8px;
       justify-content: space-between;
       align-items: center;
 
       .div-filter {
         display: flex;
-        width: 101px;
-        row-gap: 8px;
+        width: 104px;
         justify-content: space-between;
       }
 
