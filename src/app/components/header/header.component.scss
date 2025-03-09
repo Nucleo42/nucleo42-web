@@ -6,11 +6,11 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  box-shadow: 0px 5px 20px 1px rgba(0, 0, 0, 0.2);
 }
 
 mat-toolbar {
   height: 4.75rem;
-  box-shadow: 0px 5px 20px 1px rgba(0, 0, 0, 0.2);
   background-color: white;
 }
 
