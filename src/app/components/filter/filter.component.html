@@ -1,5 +1,5 @@
 <button class="filter-buttom" (click)="toggleFilter()">
-  <img src="assets/svg/filter.svg" alt="Ícone de filtro" />
+  <mat-icon class="filter_icon" svgIcon="filter"></mat-icon>
   Filtro
 </button>
 
@@ -9,7 +9,9 @@
       <h2>Filtro</h2>
       <aside class="div-filter">
         <button class="reset-button">Reiniciar</button>
-        <button class="close-button" (click)="toggleFilter()"><img src="assets/svg/xMark.svg" alt="X" /></button>
+        <button class="close-button" (click)="toggleFilter()">
+          <mat-icon svgIcon="close"></mat-icon>
+        </button>
       </aside>
     </div>
     <div class="divider--full-width"></div>
