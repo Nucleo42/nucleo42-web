@@ -1,12 +1,12 @@
 <div class="menu-burger">
   <button class="menu-burger__button" (click)="toggleMenuBurger()">
-    <img src="assets/svg/menu-burger.svg" alt="Menu Burger Icon" />
+    <mat-icon class="button-icon" svgIcon="menu-burger"></mat-icon>
   </button>
 
   <div class="menu-burger__wrapper" id="menu-burger__wrapper">
     <nav class="menu-burger__navigation">
       <button class="close-button" (click)="toggleMenuBurger()">
-        <img src="assets/svg/xMark.svg" alt="xMark icon" />
+        <mat-icon class="button-icon" svgIcon="close"></mat-icon>
       </button>
       <ul class="menu-burger__options">
         <li class="menu-burger__option"><a href="#">Início</a></li>
