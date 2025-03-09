@@ -4,7 +4,7 @@ import { FilterComponent } from '../../components/filter/filter.component';
 import { ProjectCardComponent } from '../../components/project-card/project-card.component';
 
 @Component({
-  selector: 'project-list',
+  selector: 'app-project-list',
   imports: [NavBarComponent, FilterComponent, ProjectCardComponent],
   standalone: true,
   templateUrl: './project-list.component.html',
