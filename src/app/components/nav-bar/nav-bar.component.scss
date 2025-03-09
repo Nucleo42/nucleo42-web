@@ -93,10 +93,16 @@ $font-family: 'Poppins', Sans-Serif;
         background-color: $backgorund;
         border: 1px solid $electric-violet-600;
         border-radius: 8px;
+        gap: 6px;
 
         @media (min-width: 1000px) {
           max-width: 565px;
           height: 48px;
+        }
+        .small-icon {
+          height: 10px;
+          width: 10px;
+          font-size: 8px;
         }
 
         input {
