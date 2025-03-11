@@ -21,7 +21,7 @@ $font: 'Poppins', sans-serif;
   font-size: 16px;
   line-height: 24px;
   letter-spacing: 1.5%;
-  color: $silver-chalice-100;
+  color: #ffffff;
   cursor: pointer;
 
   &:active {
@@ -38,7 +38,7 @@ $font: 'Poppins', sans-serif;
   .filter-icon {
     width: 24px;
     height: 24px;
-    color: $silver-chalice-100;
+    color: #fff;
   }
 }
 .filter-wrapper {
@@ -57,7 +57,7 @@ $font: 'Poppins', sans-serif;
     flex-direction: column;
     position: fixed;
     width: 360px;
-    height: 100vh;
+    height: 100%;
     align-items: center;
     background-color: $backgorund;
     border: 1px solid #ddd;
@@ -71,7 +71,7 @@ $font: 'Poppins', sans-serif;
       display: flex;
       width: 288px;
       height: 56px;
-      margin-top: 8px;
+      margin: 16px 0;
       justify-content: space-between;
       align-items: center;
 
