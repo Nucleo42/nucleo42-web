@@ -90,10 +90,7 @@ $font: 'Poppins', sans-serif;
       .close-button {
         background: none;
         border: none;
-        font:
-          none 500 12px/18px Poppins,
-          Arial,
-          sans-serif;
+        font: 600 12px/18px $font;
         text-align: center;
         letter-spacing: 1.5%;
         cursor: pointer;
