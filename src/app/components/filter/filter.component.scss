@@ -64,7 +64,7 @@ $font: 'Poppins', sans-serif;
     border-radius: 8px;
     font-family: Poppins, Arial, sans-serif;
     z-index: $z-index-filter;
-    overflow: scroll;
+    overflow-y: scroll;
     overflow-x: hidden;
 
     &__header {
