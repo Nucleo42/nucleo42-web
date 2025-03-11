@@ -28,4 +28,11 @@ export class FilterComponent {
     const currentDisplay = window.getComputedStyle(element).display;
     element.style.display = currentDisplay === 'none' ? 'flex' : 'none';
   }
+
+  resetFilters(): void {
+    const checkboxes = document.querySelectorAll('.filter-group input[type="checkbox"]');
+    checkboxes.forEach((checkbox) => {
+      (checkbox as HTMLInputElement).checked = false;
+    });
+  }
 }
