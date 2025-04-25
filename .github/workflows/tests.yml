@@ -23,8 +23,8 @@ jobs:
       - name: Run tests with coverage
         run: npm run test:ci
 
-      - name: Check if all tests pass and coverage is 100%
+      - name: Check if all tests pass and coverage is 70%
         if: failure()
         run: |
-          echo "Some tests failed or coverage is not 100%"
+          echo "Some tests failed or coverage is not 70%"
           exit 1
