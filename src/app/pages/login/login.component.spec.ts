@@ -1,64 +1,71 @@
-import { TestBed, ComponentFixture } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { LoginComponent } from './login.component';
-import { FormsModule } from '@angular/forms';
+import { Store } from '@ngxs/store';
+import { of } from 'rxjs';
+import { ReactiveFormsModule } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
 import { CommonModule } from '@angular/common';
+import { Login } from '../../state/auth/auth.action';
 
 describe('LoginComponent', () => {
   let component: LoginComponent;
   let fixture: ComponentFixture<LoginComponent>;
+  let storeMock: { dispatch: jest.Mock; select: jest.Mock };
 
-  beforeEach(() => {
-    TestBed.configureTestingModule({
-      imports: [LoginComponent, FormsModule, MatIconModule, CommonModule],
-    });
+  beforeEach(async () => {
+    storeMock = {
+      dispatch: jest.fn(),
+      select: jest.fn().mockReturnValue(of(null)),
+    };
+
+    await TestBed.configureTestingModule({
+      imports: [ReactiveFormsModule, MatIconModule, CommonModule, LoginComponent],
+      providers: [{ provide: Store, useValue: storeMock }],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(LoginComponent);
     component = fixture.componentInstance;
-    fixture.detectChanges(); // Garante que o ciclo de vida do Angular seja iniciado
+    fixture.detectChanges();
   });
 
-  test('deve criar o componente', () => {
+  it('should create', () => {
     expect(component).toBeTruthy();
   });
 
-  test('deve exibir mensagem de erro se campos estiverem vazios', () => {
-    component.email = '';
-    component.password = '';
-    component.login();
-    fixture.detectChanges();
-    expect(component.loginError).toBe('Por favor, preencha todos os campos.');
+  it('should initialize loginForm with empty values', () => {
+    expect(component.loginForm.value).toEqual({ email: '', password: '' });
   });
 
-  test('deve fazer login com credenciais corretas', () => {
-    component.email = 'user@example.com';
-    component.password = 'password';
-    jest.spyOn(window, 'alert').mockImplementation(() => {
-      const myArray = [
-        { login: 'test', senha: '123456' },
-        { login: 'test2', senha: '123456789' },
-      ];
-      // Estrutura mais complexa para testes
-      console.log(myArray);
-    });
+  it('should mark form as touched when login is called with invalid form', () => {
+    component.loginForm.controls.email.setValue('');
+    component.loginForm.controls.password.setValue('');
 
     component.login();
-    fixture.detectChanges();
-    expect(component.loginError).toBe('');
-    expect(window.alert).toHaveBeenCalledWith('Login bem-sucedido!');
+
+    expect(component.loginForm.touched).toBeTruthy();
+    expect(component.submitted).toBeTruthy();
   });
 
-  test('deve exibir mensagem de erro com credenciais incorretas', () => {
-    component.email = 'email@errado.com';
-    component.password = 'senhaerrada';
+  it('should dispatch login action when form is valid', () => {
+    component.loginForm.controls.email.setValue('test@example.com');
+    component.loginForm.controls.password.setValue('password123');
     component.login();
-    fixture.detectChanges();
-    expect(component.loginError).toBe('Email ou senha incorretos.');
+
+    expect(storeMock.dispatch).toHaveBeenCalledWith(new Login('test@example.com', 'password123'));
+    expect(component.submitted).toBeFalsy();
   });
 
-  test('deve alternar a visibilidade da senha', () => {
-    expect(component.hidePassword).toBe(true);
+  it('should toggle password visibility', () => {
+    expect(component.hidePassword).toBeTruthy();
     component.togglePassword();
-    expect(component.hidePassword).toBe(false);
+    expect(component.hidePassword).toBeFalsy();
+  });
+
+  it('should set submitted to true if an error occurs in login', () => {
+    storeMock.select.mockReturnValue(of('Login failed'));
+    component.loginForm.controls.email.setValue('test@example.com');
+    component.loginForm.controls.password.setValue('password123');
+    component.login();
+    expect(component.submitted).toBeTruthy();
   });
 });

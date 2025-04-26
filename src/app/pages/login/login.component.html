@@ -1,38 +1,30 @@
 <main class="container-form">
   <h1 class="billboard">Conecte, colabore e transforme ideias em realidade!</h1>
 
-  <form (ngSubmit)="login()" #loginForm="ngForm">
+  <form [formGroup]="loginForm" (ngSubmit)="login()">
     <header>
       <h1>Login</h1>
       <p>Digite seus dados nos campos abaixo</p>
     </header>
 
-    <div *ngIf="loginError" class="error-message">Email e/ou senha incorreto(s)!. Tente novamente.</div>
+    <div *ngIf="submitted" class="error-message">Email e/ou senha incorreto(s)!. Tente novamente.</div>
 
     <div>
       <label for="email">Email</label>
-      <input
-        [className]="loginError ? 'error' : ''"
-        type="email"
-        id="email"
-        [(ngModel)]="email"
-        name="email"
-        placeholder="Example@gmail.com"
-        required />
+      <input [class.error]="submitted" type="email" id="email" formControlName="email" placeholder="example@gmail.com" required />
     </div>
 
     <div>
-      <label class="label-with-icon" for="password"> Senha </label>
+      <label class="label-with-icon" for="password">Senha</label>
       <div class="input-icon">
         <input
-          [className]="loginError ? 'error' : ''"
+          [class.error]="submitted"
           [type]="hidePassword ? 'password' : 'text'"
           id="password"
-          [(ngModel)]="password"
-          name="password"
+          formControlName="password"
           placeholder="*********"
           required />
-        <mat-icon (click)="togglePassword()" class="visibility-icon bg-none" aria-label="Alternar visibilidade da senha">
+        <mat-icon (click)="togglePassword()" class="visibility-icon" aria-label="Alternar visibilidade da senha">
           {{ hidePassword ? 'visibility_off' : 'visibility' }}
         </mat-icon>
       </div>
