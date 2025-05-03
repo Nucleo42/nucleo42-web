@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { MatIconModule, MatIconRegistry } from '@angular/material/icon';
 import { DomSanitizer } from '@angular/platform-browser';
+import { FilterProjectService } from '@app/state/filter-project/filter-project.service';
 
 @Component({
   selector: 'app-filter',
@@ -16,6 +17,7 @@ export class FilterComponent {
   constructor(
     private matIconRegistry: MatIconRegistry,
     private domSanitizer: DomSanitizer,
+    private filterProjectService: FilterProjectService,
   ) {
     this.matIconRegistry.addSvgIcon('filter', this.domSanitizer.bypassSecurityTrustResourceUrl('icons/filter.svg'));
     this.matIconRegistry.addSvgIcon('close', this.domSanitizer.bypassSecurityTrustResourceUrl('icons/xMark.svg'));
@@ -34,5 +36,6 @@ export class FilterComponent {
     checkboxes.forEach((checkbox) => {
       (checkbox as HTMLInputElement).checked = false;
     });
+    this.filterProjectService.clearFilters();
   }
 }

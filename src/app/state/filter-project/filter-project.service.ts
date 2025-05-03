@@ -3,6 +3,8 @@ import { HttpClient, HttpParams, HttpErrorResponse } from '@angular/common/http'
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { DifficultyLevel, IProject, IProjectFiltersState, StatusProjectEnum } from './filter-project.model';
+import { ClearFilter } from '@app/state/filter-project/filter-project.action';
+import { Store } from '@ngxs/store';
 
 @Injectable({
   providedIn: 'root',
@@ -10,8 +12,21 @@ import { DifficultyLevel, IProject, IProjectFiltersState, StatusProjectEnum } fr
 export class FilterProjectService {
   readonly apiUrl = 'api/projects';
 
-  constructor(private http: HttpClient) {}
+  constructor(
+    private http: HttpClient,
+    private store: Store,
+  ) {}
 
+  clearFilters(): void {
+    const defaultState: IProjectFiltersState = {
+      searchText: '',
+      selectedStacks: [],
+      selectedStatus: [],
+      selectedDifficulty: [],
+      openJobsOnly: false,
+    };
+    this.store.dispatch(new ClearFilter(defaultState));
+  }
   processStackSelection(checkboxes: NodeListOf<Element>): string[] {
     return Array.from(checkboxes)
       .map((checkbox) => (checkbox as HTMLInputElement).getAttribute('data-value') ?? '')
