@@ -33,8 +33,9 @@ export class FilterComponent {
 
   resetFilters(): void {
     const checkboxes = document.querySelectorAll('.filter-group input[type="checkbox"]');
-    checkboxes.forEach((checkbox) => {
-      (checkbox as HTMLInputElement).checked = false;
+    checkboxes.forEach((element: Element) => {
+      const checkbox = element as HTMLInputElement;
+      checkbox.checked = false;
     });
     this.filterProjectService.clearFilters();
   }
