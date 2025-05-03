@@ -25,12 +25,12 @@ export class ApplyStackFilter {
 
 export class ApplyStatusFilter {
   static readonly type = '[Filters] Apply Status';
-  constructor(public payload: StatusProjectEnum) {}
+  constructor(public payload: StatusProjectEnum[]) {}
 }
 
 export class ApplyDifficultyFilter {
   static readonly type = '[Filters] Apply Difficulty';
-  constructor(public payload: DifficultyLevel) {}
+  constructor(public payload: DifficultyLevel[]) {}
 }
 
 export class ApplyJobStatusFilter {
