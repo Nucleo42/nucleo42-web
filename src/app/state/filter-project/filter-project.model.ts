@@ -29,7 +29,7 @@ export interface IProject {
 export interface IProjectFiltersState {
   searchText: string;
   selectedStacks: string[];
-  selectedStatus: StatusProjectEnum | null;
-  selectedDifficulty: DifficultyLevel | null;
+  selectedStatus: StatusProjectEnum;
+  selectedDifficulty: DifficultyLevel;
   openJobsOnly: boolean;
 }
