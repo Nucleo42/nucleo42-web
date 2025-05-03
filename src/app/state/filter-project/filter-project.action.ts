@@ -1,7 +1,10 @@
-import { DifficultyLevel, IProject, StatusProjectEnum } from './filter-project.model';
+import { DifficultyLevel, IProject, IProjectFiltersState, StatusProjectEnum } from './filter-project.model';
 
 export const loadProject = '[Projects] Load';
-export const clearFilter = '[Filters] Clear';
+export class ClearFilter {
+  static readonly type = '[Filters] Clear';
+  constructor(public payload: IProjectFiltersState) {}
+}
 
 export class LoadProjectsSuccess {
   static readonly type = '[Projects] Load Success';
