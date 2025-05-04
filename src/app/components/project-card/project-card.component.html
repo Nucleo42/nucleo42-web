@@ -1,0 +1,18 @@
+<div class="project-card">
+  <div class="project-card__image"></div>
+
+  <h3 class="project-card__title">{{ project.name }}</h3>
+
+  <div class="project-card__stacks">
+    Tecnologias:
+    <div class="project-card__stacks-icons">
+      <ng-container *ngFor="let stack of project.stacks">
+        <div class="squared_icon"><img src="{{ stack.values }}" alt="{{ stack.keys }}" /></div>
+      </ng-container>
+    </div>
+  </div>
+
+  <p class="project-card__description">{{ project.description }}</p>
+
+  <button class="project-card__button">View More</button>
+</div>

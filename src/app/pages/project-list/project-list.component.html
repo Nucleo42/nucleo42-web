@@ -1,0 +1,31 @@
+<main class="project-list">
+  <section class="project-list__filter">
+    <h1 class="title">{{ title }}</h1>
+    <app-filter></app-filter>
+  </section>
+
+  <div *ngIf="(loading$ | async) && !(projects$ | async)?.length" class="loading-state">
+    <p>Carregando projetos...</p>
+  </div>
+
+  <div *ngIf="error$ | async as error" class="error-state">
+    <p>Erro ao carregar projetos: {{ error.message }}</p>
+    <button (click)="retryLoadProjects()">Tentar novamente</button>
+  </div>
+
+  <ng-container *ngIf="projects$ | async as projects">
+    <section *ngIf="projects.length > 0" class="project-list__grid">
+      <app-project-card *ngFor="let project of projects; trackBy: trackById" class="project-card" [project]="project"> </app-project-card>
+    </section>
+
+    <div *ngIf="projects.length === 0 && !(loading$ | async) && !(error$ | async)" class="empty-state">
+      <p>Nenhum projeto encontrado com os filtros atuais.</p>
+    </div>
+
+    <div *ngIf="projects.length > 0 && hasMoreProjects" class="load-more">
+      <button [disabled]="loading$ | async" (click)="loadMoreProjects()">
+        {{ (loading$ | async) ? 'Carregando...' : 'Carregar mais' }}
+      </button>
+    </div>
+  </ng-container>
+</main>
