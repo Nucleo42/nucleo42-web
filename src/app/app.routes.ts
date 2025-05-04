@@ -8,4 +8,8 @@ export const routes: Routes = [
   { path: 'layout', component: LayoutComponent },
 
   { path: '', pathMatch: 'full', redirectTo: 'login' },
+  {
+    path: 'project',
+    loadComponent: () => import('@app/pages/project-list/project-list.component').then((m) => m.ProjectListComponent),
+  },
 ];
