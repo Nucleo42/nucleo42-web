@@ -1,4 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { Store } from '@ngxs/store';
 import { Observable, Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
@@ -9,7 +10,7 @@ import { IFilterProjectStateModel, IProject } from '@app/state/filter-project/fi
 
 @Component({
   selector: 'app-project-list',
-  imports: [FilterComponent, ProjectCardComponent],
+  imports: [CommonModule, FilterComponent, ProjectCardComponent],
   standalone: true,
   templateUrl: './project-list.component.html',
   styleUrl: './project-list.component.scss',
