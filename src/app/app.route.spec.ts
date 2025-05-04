@@ -4,7 +4,7 @@ import { LayoutComponent } from './components/layout/layout.component';
 
 describe('AppRoutes', () => {
   it('should define the routes correctly', () => {
-    expect(routes.length).toBe(3);
+    expect(routes.length).toBe(4);
 
     const loginRoute = routes.find((r) => r.path === 'login');
     expect(loginRoute?.component).toBe(LoginComponent);
@@ -15,5 +15,10 @@ describe('AppRoutes', () => {
     const defaultRoute = routes.find((r) => r.path === '');
     expect(defaultRoute?.redirectTo).toBe('login');
     expect(defaultRoute?.pathMatch).toBe('full');
+
+    const projectRoute = routes.find((r) => r.path === 'project');
+    expect(projectRoute).toBeDefined();
+    expect(projectRoute?.path).toBe('project');
+    expect(projectRoute?.loadComponent).toBeInstanceOf(Function);
   });
 });
