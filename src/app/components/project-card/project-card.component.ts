@@ -1,13 +1,13 @@
-import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { Component, Input } from '@angular/core';
+import { IProject } from '@app/state/filter-project/filter-project.model';
 
 @Component({
   selector: 'app-project-card',
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './project-card.component.html',
   styleUrl: './project-card.component.scss',
 })
 export class ProjectCardComponent {
-  title = 'Novo Projeto';
-  description =
-    'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s.';
+  @Input() project!: IProject;
 }
